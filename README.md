@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/revmischa/socketio_pg.svg?branch=master)](https://travis-ci.org/revmischa/socketio_pg)
+
 SocketIO PostgreSQL PubSub Websocket Server
 ================
 
