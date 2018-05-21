@@ -37,6 +37,9 @@ There's a simple demo HTML page at [socketio_pg/static/test.html](socketio_pg/st
 If your application already uses PostgreSQL, you can start sending and receiving asynchronous events right away. It makes an excellent transport for messages (keep them small though, under 8000 bytes), and you can simply issue queries to do it. No additional infrastructure needed, besides this websocket server. If you aren't using PostgreSQL, [maybe you should be](https://spiegelmock.com/2014/10/19/mysql-vs-postgresql-and-why-you-care/).
 One neat trick is to set up triggers that emit `NOTIFY` queries when rows on certain tables are inserted or updated. This allows messages to be delivered to clients notifying them of updates without any application code at all. Some demos and slides from a talk can be found [here](https://github.com/revmischa/pgnotify-demos).
 
+# In Action
+![socketio_pg in action](screenshot.png)
+
 # How Is This Built?
 This server uses the following technologies:
 * Flask - python web microframework
