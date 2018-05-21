@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name='socketio_pg',
-    version='0.3',
+    version='0.4',
     description='Websocket server using PostgreSQL as a message transport. Uses SocketIO, Greenlet, Flask.',
     url='http://github.com/revmischa/socketio_pg',
     author='Mischa Spiegelmock',

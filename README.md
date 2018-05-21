@@ -42,7 +42,7 @@ If your application already uses PostgreSQL, you can start sending and receiving
 One neat trick is to set up triggers that emit `NOTIFY` queries when rows on certain tables are inserted or updated. This allows messages to be delivered to clients notifying them of updates without any application code at all. Some demos and slides from a talk can be found [here](https://github.com/revmischa/pgnotify-demos).
 
 # In Action
-![socketio_pg in action](screenshot.png)
+![socketio_pg in action](https://raw.githubusercontent.com/revmischa/socketio_pg/master/screenshot.png)
 
 # How Is This Built?
 This server uses the following technologies:
