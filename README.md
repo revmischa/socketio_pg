@@ -3,6 +3,7 @@ SocketIO PostgreSQL PubSub Websocket Server
 
 # What Is This?
 This is a websocket server that uses PostgreSQL as its message transport system.
+
 If you have an application that already uses postgres, you can easily send and receive asynchronous events via your existing database. Check out the [postgres documentation on LISTEN/NOTIFY](https://www.postgresql.org/docs/current/static/sql-notify.html) for more details.
 
 # How Do I Use This?
@@ -35,6 +36,7 @@ There's a simple demo HTML page at [socketio_pg/static/test.html](socketio_pg/st
 
 # Why Use This?
 If your application already uses PostgreSQL, you can start sending and receiving asynchronous events right away. It makes an excellent transport for messages (keep them small though, under 8000 bytes), and you can simply issue queries to do it. No additional infrastructure needed, besides this websocket server. If you aren't using PostgreSQL, [maybe you should be](https://spiegelmock.com/2014/10/19/mysql-vs-postgresql-and-why-you-care/).
+
 One neat trick is to set up triggers that emit `NOTIFY` queries when rows on certain tables are inserted or updated. This allows messages to be delivered to clients notifying them of updates without any application code at all. Some demos and slides from a talk can be found [here](https://github.com/revmischa/pgnotify-demos).
 
 # In Action
