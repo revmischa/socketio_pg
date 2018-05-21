@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SocketTest</title>
+</head>
+<body>
+  <p>Protip: set <code>localStorage.debug='*'</code> in console</p>
+
+  <form style="font-size: 1.2rem;" onsubmit="return connect()">
+    <input type="submit" style="font-size: 1.2rem;" value="Connect" />
+  </form>
+
+  <form style="font-size: 1.2rem;" onsubmit="return subscribe()">
+    Channel: <input id="channel" style="width: 60rem; font-size: 1.2rem;" value="foo" />
+    <input type="submit" style="font-size: 1.2rem;" value="Subscribe" />
+  </form>
+
+  <div style="overflow: scroll; font-size: 1.2rem; margin-top: 1rem; padding: 0.5rem; font-family: monospace; background-color: #eaeaea; width: 75%; height: 15rem;" id="messages-box">
+  </div>
+
+  <script src="/static/socket/socket.io.js"></script>
+  <script>
+    const msgbox = document.getElementById("messages-box")
+    const channelField = document.getElementById("channel")
+    let socket
+
+    function subscribe() {
+      socket.emit("subscribe", { "channel": channelField.value })
+      return false
+    }
+
+    function connect() {
+      if (socket) {
+        socket.close()
+      }
+      socket = io(`${document.location.protocol}//${document.domain}:${location.port}`);
+
+      function msg(text) {
+        msgbox.innerText += "\n" + text
+        msgbox.scrollTop = msgbox.scrollHeight
+      }
+
+      socket.on('connect', () => {
+        msg("Connected")
+        socket.emit('client_hello', {data: 'Im connected!'})
+      })
+
+      socket.on('disconnect', () => {
+        msg("Disconnected")
+      });
+
+      socket.on('error', (error) => {
+        msg("Error: " + error)
+      })
+
+      socket.on('server_hello', (data) => {
+        msg("Got hello from server: " + JSON.stringify(data))
+      })
+
+      socket.on('subscribed', (data) => {
+        channel = data.channel
+        msg(`Subscribed to ${channel}`)
+      })
+
+      socket.on('event', (data) => {
+        msg("Event fired: " + JSON.stringify(data))
+      })
+
+      return false
+    }
+  </script>
+</body>
+</html>

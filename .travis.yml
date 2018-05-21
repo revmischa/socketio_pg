@@ -1,0 +1,11 @@
+sudo: false
+language: python
+python:
+  - 3.6
+script: pytest
+
+env:
+  - DATABASE_URL="postgresql:///"
+
+addons:
+ postgresql: '9.6'
