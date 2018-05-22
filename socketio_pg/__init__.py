@@ -111,6 +111,7 @@ class PubSub():
         # unlisten if no more listeners left
         if len(self.listeners[event_name]) == 0:
             self._unsubscribe(event_name)
+            del self.listeners[event_name]
 
     def subscribe(self, event_name: EventName, queue: ListenerQueue):
         """Listen for event_name notifications and send a message on queue when received."""
