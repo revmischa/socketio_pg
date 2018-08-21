@@ -40,6 +40,7 @@ class Client:
         conn_unwrapped = self.connection  # raw
         cur = conn_unwrapped.cursor()
         self._execute(cur, f'NOTIFY "{channel}", %s', json_payload)  # channel is sanitized above
+        # N.B. NOTIFY isn't sent until COMMIT
 
     def _execute(self, cur, query, *bind_args):
         cur.execute(query, tuple(bind_args))
