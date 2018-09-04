@@ -94,7 +94,7 @@ class PubSub():
 
     def _new_connection(self):
         """Connect to DB."""
-        conn = psycopg2.connect(self.dsn, async=True)
+        conn = psycopg2.connect(self.dsn, async_=True)
         # wait until connected
         self.wait(conn)
         return conn

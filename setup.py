@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='socketio_pg',
-    version='0.7',
+    version='0.8',
     description='Websocket server using PostgreSQL as a message transport. Uses SocketIO, Greenlet, Flask.',
     url='http://github.com/revmischa/socketio_pg',
     author='Mischa Spiegelmock',
